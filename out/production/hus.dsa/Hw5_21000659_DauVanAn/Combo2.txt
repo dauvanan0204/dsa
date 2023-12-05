@@ -1,0 +1,23 @@
+Bai3:
+Từ biểu thức xâu kí tự đầu vào, dựng cây nhị phân biểu diễn biểu thức theo các bước sau:
+1. Chuyển biểu thức từ dạng trung tố sang hậu tố.
+Đọc từng token trong biểu thức infix từ trái qua phải, với mỗi token ta thực hiện các bước sau:
+- Nếu là toán hạng: cho ra output.
+- Nếu là dấu mở ngoặc “(“: cho vào stack.
+- Nếu là dấu đóng ngoặc “)”: lấy các toán tử trong stack ra và cho vào output cho đến khi gặp dấu mở ngoặc
+“(“. Dấu mở ngoặc cũng phải được đưa ra khỏi stack.
+- Nếu là toán tử:
+• Chừng nào ở đỉnh stack là toán tử và toán tử đó có độ ưu tiên lớn hơn hoặc bằng toán tử hiện tại thì
+lấy toán tử đó ra khỏi stack và cho ra output.
+• Đưa toán tử hiện tại vào stack.
+Sau khi duyệt hết biểu thức infix, nếu trong stack còn phần tử thì lấy các token trong đó ra và cho lần lượt vào
+output. Cuối cùng là đảo ngược biểu thức một lần nữa và ta sẽ thu được kết quả.
+2. Xây dựng cây nhị phân từ dạng hậu tố:
+Lặp qua từng token trong chuỗi hậu tố
+- Tạo một đối tượng BinaryTreeNode nhãn của node là token này
+- Nếu là toán hạng: Push node vào stack
+- Nếu là toán tử:
+• Pop một toán hạng ra khỏi stack và đặt làm RightChild của node.
+• Pop toán hạng kế tiếp ra khỏi stack và đặt làm LeftChild của node.
+• Push node vào stack.
+Sau khi vòng lặp kết thúc, phần tử cuối cùng còn lại trong stack là node gốc của cây biểu thức.
